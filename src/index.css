@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --primary: #ff0000;
+    --bg-light: #f8fafc;
+    --text-light: #0f172a;
+    --sidebar-light: #121212;
+    --card-light: #ffffff;
+    --border-light: #e2e8f0;
+  }
+
+  .dark {
+    --bg-dark: #121212;
+    --text-dark: #f8fafc;
+    --sidebar-dark: #1e1e1e;
+    --card-dark: #1e1e1e;
+    --border-dark: #333333;
+  }
+
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-[var(--bg-light)] text-[var(--text-light)] transition-colors duration-300;
+  }
+
+  .dark body {
+    @apply bg-[var(--bg-dark)] text-[var(--text-dark)];
+  }
+}
+
+@layer components {
+  /* Primary Button */
+  .btn-primary {
+    @apply bg-[#ff0000] text-white px-[18px] py-[10px] rounded-lg hover:bg-[#cc0000] transition-all duration-300 font-medium flex items-center justify-center gap-2 shadow-sm hover:shadow-md active:scale-95;
+  }
+
+  /* Secondary Button */
+  .btn-secondary {
+    @apply bg-white text-[#ff0000] border-2 border-[#ff0000] px-[18px] py-[10px] rounded-lg hover:bg-[#ff0000] hover:text-white transition-all duration-300 font-medium flex items-center justify-center gap-2 shadow-sm active:scale-95;
+  }
+  
+  .dark .btn-secondary {
+    @apply bg-[#1e1e1e] border-[#ff0000] text-[#ff0000] hover:bg-[#ff0000] hover:text-white;
+  }
+
+  /* Outline Button */
+  .btn-outline {
+    @apply bg-transparent border border-[#dddddd] text-[#333333] px-[18px] py-[10px] rounded-lg hover:border-[#ff0000] hover:text-[#ff0000] transition-all duration-300 font-medium flex items-center justify-center gap-2 active:scale-95;
+  }
+  
+  .dark .btn-outline {
+    @apply border-[#444444] text-gray-300 hover:border-[#ff0000] hover:text-[#ff0000];
+  }
+
+  /* Icon Button */
+  .btn-icon {
+    @apply bg-[#f1f1f1] text-[#333333] p-2 rounded-lg hover:bg-[#e0e0e0] transition-all duration-300 flex items-center justify-center active:scale-95;
+  }
+  
+  .dark .btn-icon {
+    @apply bg-[#2a2a2a] text-gray-300 hover:bg-[#333333] hover:text-white;
+  }
+
+  /* Disabled Button */
+  .btn-disabled {
+    @apply bg-[#e0e0e0] text-[#888888] px-[18px] py-[10px] rounded-lg cursor-not-allowed font-medium flex items-center justify-center gap-2 opacity-70;
+  }
+  
+  .dark .btn-disabled {
+    @apply bg-[#333333] text-[#666666];
+  }
+  
+  .card {
+    @apply bg-[var(--card-light)] border border-[var(--border-light)] rounded-2xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md;
+  }
+  
+  .dark .card {
+    @apply bg-[var(--card-dark)] border-[var(--border-dark)] shadow-none hover:border-[#ff0000]/30 hover:shadow-[0_0_15px_rgba(255,0,0,0.05)];
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-lg border border-[var(--border-light)] bg-transparent text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#ff0000]/50 focus:border-[#ff0000] transition-all duration-200;
+  }
+
+  .dark .input-field {
+    @apply border-[var(--border-dark)] bg-[#121212] text-white focus:ring-[#ff0000]/50 focus:border-[#ff0000];
+  }
+
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-[#333] rounded-full;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-[#444];
+  }
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(800px); opacity: 0; }
+}
