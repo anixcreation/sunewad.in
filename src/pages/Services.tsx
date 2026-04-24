@@ -11,7 +11,7 @@ export default function Services() {
     },
     {
       icon: Code,
-      title: 'Web & App Development',
+      title: 'Tech Development',
       description: 'Custom software solutions, e-commerce platforms, and mobile applications tailored to your business needs.',
       category: 'Digital Solutions'
     },

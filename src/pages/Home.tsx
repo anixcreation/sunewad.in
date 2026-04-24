@@ -23,10 +23,10 @@ export default function Home() {
   }, []);
 
   const features = [
-    { icon: Shield, title: 'Securus Systems', desc: 'Advanced security & surveillance solutions' },
-    { icon: Monitor, title: 'Coreprix Hardware', desc: 'High-performance computing & networking' },
+    { icon: Shield, title: 'Securus Cctv', desc: 'Advanced security & surveillance solutions' },
+    { icon: Monitor, title: 'Coreprix Surveillance', desc: 'High-performance computing & networking' },
     { icon: Code, title: 'Development', desc: 'Custom software & website development' },
-    { icon: Headset, title: '24/7 Support', desc: 'Dedicated online tech support services' },
+    { icon: Headset, title: 'Online Support', desc: 'Dedicated online tech support services' },
   ];
 
   return (
@@ -284,7 +284,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="p-8 md:p-16 flex flex-col justify-center space-y-8">
             <div className="space-y-4">
-              <h2 className="text-3xl md:text-4xl font-bold">Why Choose Sunewad?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold">Why Choose Sunewad Multiservices?</h2>
               <p className="text-gray-400 text-lg">We don't just sell equipment; we provide complete peace of mind through professional implementation and dedicated support.</p>
             </div>
             

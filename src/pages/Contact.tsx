@@ -63,7 +63,7 @@ export default function Contact() {
               </div>
               <div>
                 <h4 className="font-bold">Phone</h4>
-                <p className="text-gray-500 dark:text-gray-400 mt-1">+91 99999 99999</p>
+                <p className="text-gray-500 dark:text-gray-400 mt-1">+91 9420047039</p>
               </div>
             </div>
 
@@ -73,7 +73,7 @@ export default function Contact() {
               </div>
               <div>
                 <h4 className="font-bold">Email</h4>
-                <p className="text-gray-500 dark:text-gray-400 mt-1">info@sunewad.shop</p>
+                <p className="text-gray-500 dark:text-gray-400 mt-1">anishsunewad@gmail.com</p>
               </div>
             </div>
 
@@ -84,8 +84,8 @@ export default function Contact() {
               <div>
                 <h4 className="font-bold">Business Hours</h4>
                 <p className="text-gray-500 dark:text-gray-400 mt-1">
-                  Mon - Sat: 10:00 AM - 7:00 PM<br />
-                  Sunday: Closed
+                  Mon - Sat: 10:00 AM - 5:00 PM<br />
+                  Friday: Closed
                 </p>
               </div>
             </div>

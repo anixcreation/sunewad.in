@@ -60,9 +60,9 @@ export default function Terms() {
             For any questions regarding these Terms & Conditions or to request support, please contact us at:
           </p>
           <div className="bg-gray-50 dark:bg-[#2a2a2a] p-4 rounded-lg mt-2 inline-block">
-            <p className="font-medium">CEO: Anish A. Sunewad</p>
-            <p>Email: info@sunewad.shop</p>
-            <p>Location: Udgir, Maharashtra</p>
+            <p className="font-medium">Anish Sunewad</p>
+            <p>Email: anishsunewad@gmail.com</p>
+            <p>Location: Sunewad Multiservices, Udgir, Maharashtra</p>
           </div>
         </section>
       </div>
