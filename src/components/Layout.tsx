@@ -357,8 +357,8 @@ export default function Layout({ children, user }: LayoutProps) {
           <div className="mt-8 pt-8 border-t border-[var(--border-light)] dark:border-[var(--border-dark)] text-sm text-gray-500 dark:text-gray-400 text-center">
             © {new Date().getFullYear()} Sunewad Multiservices. All rights reserved.
           </div>
-           <div className="mt-8 pt-8 border-t border-[var(--border-light)] dark:border-[var(--border-dark)] text-sm text-gray-500 dark:text-gray-400 text-center">
-  {new Date().getFullYear()} powered by{" "}
+           <div className="mt-8 text-sm text-gray-500 dark:text-gray-400 text-right">
+  powered by{" "}
   <a 
     href="https://www.instagram.com/anix.ac" 
     target="_blank" 
