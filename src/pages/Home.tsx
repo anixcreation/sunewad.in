@@ -328,7 +328,7 @@ export default function Home() {
                   <Trophy size={24} className="text-white" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">500+</div>
+                  <div className="text-2xl font-bold text-white">1000+</div>
                   <div className="text-sm text-gray-400">Installations Completed</div>
                 </div>
               </div>

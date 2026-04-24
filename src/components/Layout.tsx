@@ -77,7 +77,7 @@ export default function Layout({ children, user }: LayoutProps) {
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30 mix-blend-overlay"></div>
         <div className="relative z-10 flex items-center justify-center gap-2">
           <span className="animate-pulse">🎉</span>
-          <span><strong>Diwali Special:</strong> Get up to 20% off on all Securus CCTV Installation Packages!</span>
+          <span><strong>Special Offers:</strong> Get up to 20% off on all Securus CCTV Installation Packages!</span>
           <Link to="/contact" className="underline font-bold hover:text-red-200 transition-colors ml-2">Claim Now</Link>
         </div>
       </div>
@@ -347,16 +347,27 @@ export default function Layout({ children, user }: LayoutProps) {
             <div>
               <h3 className="font-semibold mb-4">Contact</h3>
               <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400">
-                <li>CEO: Anish A. Sunewad</li>
+                <li>Sunewad Multiservices</li>
                 <li>Udgir, Maharashtra, India</li>
-                <li>info@sunewad.shop</li>
-                <li>+91 99999 99999</li>
+                <li>anishsunewad@gmail.com</li>
+                <li>+91 9420047039</li>
               </ul>
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-[var(--border-light)] dark:border-[var(--border-dark)] text-sm text-gray-500 dark:text-gray-400 text-center">
             © {new Date().getFullYear()} Sunewad Multiservices. All rights reserved.
           </div>
+           <div className="mt-8 pt-8 border-t border-[var(--border-light)] dark:border-[var(--border-dark)] text-sm text-gray-500 dark:text-gray-400 text-center">
+  {new Date().getFullYear()} powered by{" "}
+  <a 
+    href="https://www.instagram.com/anix.ac" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="hover:text-blue-500 transition-colors duration-200"
+  >
+    @anix.ac
+  </a>
+</div>
         </div>
       </footer>
     </div>

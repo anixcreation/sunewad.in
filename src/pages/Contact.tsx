@@ -107,7 +107,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={e => setFormData({...formData, name: e.target.value})}
                     className="input-field"
-                    placeholder="John Doe"
+                    placeholder="Your Name"
                   />
                 </div>
                 <div className="space-y-2">
@@ -118,7 +118,7 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={e => setFormData({...formData, phone: e.target.value})}
                     className="input-field"
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 0000000000"
                   />
                 </div>
               </div>
