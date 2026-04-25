@@ -61,7 +61,7 @@ export default function Layout({ children, user }: LayoutProps) {
       <div className="bg-black text-gray-300 text-xs py-2 px-4 border-b border-[#222]">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-4">
-            <a href="tel:8484006202" className="flex items-center gap-1.5 hover:text-red-500 transition-colors font-medium">
+            <a href="tel:9420047039" className="flex items-center gap-1.5 hover:text-red-500 transition-colors font-medium">
               <Phone size={12} /> +91 9420047039
             </a>
             <a href="mailto:anishsunewad@gmail.com" className="flex items-center gap-1.5 hover:text-red-500 transition-colors font-medium">
