@@ -11,12 +11,12 @@ export default async function handler(req, res) {
       const { featured, category } = req.query;
       let query = supabase.from('products').select('*').order('created_at', { ascending: false });
       
-      if (featured === 'true') {
-        query = query.eq('featured', true);
-      }
-      if (category) {
-        query = query.eq('category', category);
-      }
+    //  if (featured === 'true') {
+      //  query = query.eq('featured', true);
+     // }
+      //if (category) {
+      //  query = query.eq('category', category);
+      //}
 
       const { data, error } = await query;
       if (error) throw error;
