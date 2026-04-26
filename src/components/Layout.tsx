@@ -87,13 +87,13 @@ export default function Layout({ children, user }: LayoutProps) {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded flex items-center justify-center text-white overflow-hidden">
-      <img 
-        src="/favicon.svg" 
-        alt="Sunewad Logo"
-        className="w-full h-full object-contain p-1" 
-      />
-    </div>
+            <div className="w-8 h-8 bg-gradient-to-br rounded-lg flex items-center justify-center text-white font-bold shadow-lg shadow-red-900/50 border border-red-500/30">
+              <img 
+                src="/favicon.svg" 
+                alt="Sunewad Logo"
+                className="w-5 h-5 object-contain" 
+              />
+            </div>
             <span className="font-bold tracking-tight text-lg hidden sm:block">Sunewad Multiservices</span>
             <span className="font-bold tracking-tight text-lg sm:hidden">Sunewad</span>
           </Link>
