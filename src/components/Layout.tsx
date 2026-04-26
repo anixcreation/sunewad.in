@@ -327,14 +327,21 @@ export default function Layout({ children, user }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="space-y-4">
-              <div className="flex items-center gap-2 font-bold text-lg">
-                <div className="w-6 h-6 bg-red-600 rounded flex items-center justify-center text-white text-xs">S</div>
-                Sunewad Multiservices
-              </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400 max-w-xs">
-                Premium security systems, IT hardware, and professional development services.
-              </p>
-            </div>
+  <div className="flex items-center gap-2 font-bold text-lg">
+    {/* Logo Container */}
+    <div className="w-8 h-8 bg-red-600 rounded flex items-center justify-center text-white overflow-hidden">
+      <img 
+        src="/favicon.svg" 
+        alt="Sunewad Logo"
+        className="w-full h-full object-contain p-1" 
+      />
+    </div>
+    <span className="dark:text-white">Sunewad Multiservices</span>
+  </div>
+  <p className="text-sm text-gray-500 dark:text-gray-400 max-w-xs">
+    Premium security systems, IT hardware, and professional development services.
+  </p>
+</div>
             <div>
               <h3 className="font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400">
