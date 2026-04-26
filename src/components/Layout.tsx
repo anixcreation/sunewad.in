@@ -87,9 +87,13 @@ export default function Layout({ children, user }: LayoutProps) {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-red-600 to-red-800 rounded-lg flex items-center justify-center text-white font-bold shadow-lg shadow-red-900/50 border border-red-500/30">
-              S
-            </div>
+            <div className="w-8 h-8 rounded flex items-center justify-center text-white overflow-hidden">
+      <img 
+        src="/favicon.svg" 
+        alt="Sunewad Logo"
+        className="w-full h-full object-contain p-1" 
+      />
+    </div>
             <span className="font-bold tracking-tight text-lg hidden sm:block">Sunewad Multiservices</span>
             <span className="font-bold tracking-tight text-lg sm:hidden">Sunewad</span>
           </Link>
@@ -315,13 +319,13 @@ export default function Layout({ children, user }: LayoutProps) {
 
   return (
     <div className="min-h-screen flex flex-col bg-[var(--bg-light)] dark:bg-[var(--bg-dark)]">
-      <Header />
-      <CartSidebar />
       
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {children}
-      </main>
-
+        <CartSidebar />
+      
+        <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          {children}
+        </main>
+      
       {/* Footer */}
       <footer className="border-t border-[var(--border-light)] dark:border-[var(--border-dark)] bg-[var(--card-light)] dark:bg-[#111] mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
@@ -329,7 +333,7 @@ export default function Layout({ children, user }: LayoutProps) {
             <div className="space-y-4">
   <div className="flex items-center gap-2 font-bold text-lg">
     {/* Logo Container */}
-    <div className="w-8 h-8 bg-red-600 rounded flex items-center justify-center text-white overflow-hidden">
+    <div className="w-8 h-8 rounded flex items-center justify-center text-white overflow-hidden">
       <img 
         src="/favicon.svg" 
         alt="Sunewad Logo"
