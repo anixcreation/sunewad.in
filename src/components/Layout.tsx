@@ -88,7 +88,7 @@ export default function Layout({ children, user }: LayoutProps) {
          {/* Logo */}
 <Link to="/" className="flex items-center gap-3">
   {/* Round Logo Container */}
-  <div className="w-9 h-9 bg-gradient-to-br from-red-600 to-red-800 rounded-full flex items-center justify-center shadow-lg shadow-red-900/50 border border-red-500/30 overflow-hidden">
+  <div className="w-9 h-9 bg-gradient-to-br from-white-600 to-white-800 rounded-full flex items-center justify-center shadow-lg shadow-red-900/50 border border-red-500/30 overflow-hidden">
     <img 
       src="/favicon.svg" 
       alt="Sunewad Logo" 
