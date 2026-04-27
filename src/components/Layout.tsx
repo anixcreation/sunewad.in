@@ -61,8 +61,8 @@ export default function Layout({ children, user }: LayoutProps) {
       <div className="bg-black text-gray-300 text-xs py-2 px-4 border-b border-[#222]">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-4">
-            <a href="tel:9420047039" className="flex items-center gap-1.5 hover:text-red-500 transition-colors font-medium">
-              <Phone size={12} /> +91 9420047039
+            <a href="tel:8484006202" className="flex items-center gap-1.5 hover:text-red-500 transition-colors font-medium">
+              <Phone size={12} /> +91 8484006202
             </a>
             <a href="mailto:anishsunewad@gmail.com" className="flex items-center gap-1.5 hover:text-red-500 transition-colors font-medium">
               <Mail size={12} /> anishsunewad@gmail.com
@@ -77,16 +77,14 @@ export default function Layout({ children, user }: LayoutProps) {
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30 mix-blend-overlay"></div>
         <div className="relative z-10 flex items-center justify-center gap-2">
           <span className="animate-pulse">🎉</span>
-          <span><strong>Special Offers:</strong> Get up to 20% off on all Securus CCTV Installation Packages!</span>
+          <span><strong>Diwali Special:</strong> Get up to 20% off on all Securus CCTV Installation Packages!</span>
           <Link to="/contact" className="underline font-bold hover:text-red-200 transition-colors ml-2">Claim Now</Link>
         </div>
       </div>
-
       
       <header className="sticky top-0 z-50 w-full border-b border-[#222] bg-[#111111]/80 backdrop-blur-md text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <div className="w-8 h-8 bg-gradient-to-br from-red-600 to-red-800 rounded-lg flex items-center justify-center text-white font-bold shadow-lg shadow-red-900/50 border border-red-500/30">
@@ -95,6 +93,7 @@ export default function Layout({ children, user }: LayoutProps) {
             <span className="font-bold tracking-tight text-lg hidden sm:block">Sunewad Multiservices</span>
             <span className="font-bold tracking-tight text-lg sm:hidden">Sunewad</span>
           </Link>
+
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1 lg:gap-2">
             {navigation.map((item) => {
@@ -316,33 +315,26 @@ export default function Layout({ children, user }: LayoutProps) {
 
   return (
     <div className="min-h-screen flex flex-col bg-[var(--bg-light)] dark:bg-[var(--bg-dark)]">
+      <Header />
+      <CartSidebar />
       
-        <CartSidebar />
-      
-        <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {children}
-        </main>
-      
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {children}
+      </main>
+
       {/* Footer */}
       <footer className="border-t border-[var(--border-light)] dark:border-[var(--border-dark)] bg-[var(--card-light)] dark:bg-[#111] mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="space-y-4">
-  <div className="flex items-center gap-2 font-bold text-lg">
-    {/* Logo Container */}
-    <div className="w-8 h-8 rounded flex items-center justify-center text-white overflow-hidden">
-      <img 
-        src="/favicon.svg" 
-        alt="Sunewad Logo"
-        className="w-full h-full object-contain p-1" 
-      />
-    </div>
-    <span className="dark:text-white">Sunewad Multiservices</span>
-  </div>
-  <p className="text-sm text-gray-500 dark:text-gray-400 max-w-xs">
-    Premium security systems, IT hardware, and professional development services.
-  </p>
-</div>
+              <div className="flex items-center gap-2 font-bold text-lg">
+                <div className="w-6 h-6 bg-red-600 rounded flex items-center justify-center text-white text-xs">S</div>
+                Sunewad Multiservices
+              </div>
+              <p className="text-sm text-gray-500 dark:text-gray-400 max-w-xs">
+                Premium security systems, IT hardware, and professional development services.
+              </p>
+            </div>
             <div>
               <h3 className="font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400">
@@ -355,27 +347,16 @@ export default function Layout({ children, user }: LayoutProps) {
             <div>
               <h3 className="font-semibold mb-4">Contact</h3>
               <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400">
-                <li>Sunewad Multiservices</li>
+                <li>CEO: Anish A. Sunewad</li>
                 <li>Udgir, Maharashtra, India</li>
-                <li>anishsunewad@gmail.com</li>
-                <li>+91 9420047039</li>
+                <li>info@sunewad.shop</li>
+                <li>+91 99999 99999</li>
               </ul>
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-[var(--border-light)] dark:border-[var(--border-dark)] text-sm text-gray-500 dark:text-gray-400 text-center">
             © {new Date().getFullYear()} Sunewad Multiservices. All rights reserved.
           </div>
-           <div className="mt-8 text-sm text-gray-500 dark:text-gray-400 text-right">
-  powered by{" "}
-  <a 
-    href="https://www.instagram.com/anix.ac" 
-    target="_blank" 
-    rel="noopener noreferrer"
-    className="hover:text-blue-500 transition-colors duration-200"
-  >
-    @anix.ac
-  </a>
-</div>
         </div>
       </footer>
     </div>
