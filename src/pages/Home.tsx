@@ -4,7 +4,8 @@ import { ArrowRight, Shield, Monitor, PenTool as Tool, Code, Headset, Zap, PlayC
 import ProductCard from '../components/ProductCard';
 
 // Is path ko dhyan se check karein (ek dot '.' kam hoga kyunki ab dono src ke andar hain)
-import { getFeaturedProducts } from '../lib/product';
+// @ts-ignore
+import { getFeaturedProducts } from '../lib/products'; // 'product' ko 'products' kar dein
 
 
 export default function Home() {

@@ -1,16 +1,20 @@
-// src/lib/product.js ke andar:
-import { supabase } from './supabaseClient'; // Agar dono 'lib' folder mein hain toh './' kaafi hai
+import { supabase } from './supabaseClient'; // Path check karein agar error aaye
 
 export const getFeaturedProducts = async () => {
-  const { data, error } = await supabase
-    .from('products')
-    .select('*')
-    .eq('featured', true)
-    .limit(3);
+  try {
+    const { data, error } = await supabase
+      .from('products') // Table ka naam exact 'products' hona chahiye
+      .select('*')
+      .eq('featured', true)
+      .limit(3);
 
-  if (error) {
-    console.error('Supabase Error:', error);
+    if (error) {
+      console.error('Supabase fetch error:', error);
+      return [];
+    }
+    return data;
+  } catch (err) {
+    console.error('System error:', err);
     return [];
   }
-  return data;
 };
