@@ -81,6 +81,7 @@ export default function Layout({ children, user }: LayoutProps) {
           <Link to="/contact" className="underline font-bold hover:text-red-200 transition-colors ml-2">Claim Now</Link>
         </div>
       </div>
+
       
       <header className="sticky top-0 z-50 w-full border-b border-[#222] bg-[#111111]/80 backdrop-blur-md text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -93,6 +94,7 @@ export default function Layout({ children, user }: LayoutProps) {
           alt="Sunewad Multiservices"
           className="w-full h-full object-contain"
         />
+      </div>   
 
       </div>
 
