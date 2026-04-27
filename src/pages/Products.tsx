@@ -26,21 +26,17 @@ export default function Products() {
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedSubcategory, setSelectedSubcategory] = useState('All');
-useEffect(() => {
-  const fetchAllProducts = async () => {
-    setLoading(true);
-    const { data, error } = await supabase
-      .from('products')
-      .select('*'); // Isse saare products mil jayenge
 
-    if (!error && data) {
-      setProducts(data);
-    }
+
+useEffect(() => {
+  const fetchAll = async () => {
+    setLoading(true);
+    const { data, error } = await supabase.from('products').select('*'); // Direct Supabase fetch
+    if (!error) setProducts(data || []);
     setLoading(false);
   };
-  fetchAllProducts();
+  fetchAll();
 }, []);
-
 
 
 
