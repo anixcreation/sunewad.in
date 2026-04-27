@@ -2,26 +2,28 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Shield, Monitor, PenTool as Tool, Code, Headset, Zap, PlayCircle, Tag, CheckCircle2, Users, Trophy, Calculator, HardDrive } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
+import { getFeaturedProducts } from '../lib/product';
 
 export default function Home() {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchFeatured = async () => {
+useEffect(() => {
+    const fetchProducts = async () => {
       try {
-        const res = await fetch('/api/products?featured=true');
-        const data = await res.json();
-        setFeaturedProducts(data.slice(0, 3));
+        setLoading(true);
+        // Direct Supabase call
+        const data = await getFeaturedProducts();
+        setFeaturedProducts(data || []);
       } catch (err) {
         console.error('Failed to fetch featured products:', err);
       } finally {
         setLoading(false);
       }
     };
-    fetchFeatured();
+    fetchProducts();
   }, []);
 
+  
   const features = [
     { icon: Shield, title: 'Securus Cctv', desc: 'Advanced security & surveillance solutions' },
     { icon: Monitor, title: 'Coreprix Surveillance', desc: 'High-performance computing & networking' },

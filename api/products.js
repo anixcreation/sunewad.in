@@ -1,14 +1,17 @@
-const { neon } = require('@neondatabase/serverless');
+import { supabase } from './supabaseClient';
 
-export default async function handler(req, res) {
-  const sql = neon(process.env.DATABASE_URL);
-
+export const getFeaturedProducts = async () => {
   try {
-    // Neon se products lana
-    const result = await sql`SELECT * FROM products`;
-    res.status(200).json(result);
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .eq('featured', true)
+      .limit(3);
+
+    if (error) throw error;
+    return data;
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Neon DB connection failed" });
+    console.error('Fetch Error:', error.message);
+    return [];
   }
-}
+};
