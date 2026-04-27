@@ -39,6 +39,7 @@ function App() {
             <Route path="/configurator" element={<Configurator />} />
             <Route path="/hdd-calculator" element={<HddCalculator />} />
             <Route path="/terms" element={<Terms />} />
+          
           </Routes>
         </Layout>
       </CartProvider>

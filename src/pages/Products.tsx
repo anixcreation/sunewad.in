@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../components/ProductCard';
 import { Search, Filter } from 'lucide-react';
+import { supabase } from '../lib/supabaseClient'; // Path check kar lena
+
 
 const CATEGORIES = [
   'All',
@@ -23,22 +25,23 @@ export default function Products() {
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedSubcategory, setSelectedSubcategory] = useState('All');
+useEffect(() => {
+  const fetchAllProducts = async () => {
+    setLoading(true);
+    const { data, error } = await supabase
+      .from('products')
+      .select('*'); // Isse saare products mil jayenge
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch('/api/products');
-        const data = await res.json();
-        setProducts(data);
-      } catch (err) {
-        console.error('Failed to fetch products:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProducts();
-  }, []);
+    if (!error && data) {
+      setProducts(data);
+    }
+    setLoading(false);
+  };
+  fetchAllProducts();
+}, []);
+
+
+
 
   // Reset subcategory when category changes
   useEffect(() => {
