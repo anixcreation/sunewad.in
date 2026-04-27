@@ -14,20 +14,19 @@ export default function Home() {
 
 
 useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
-        // Ab ye direct Supabase se data layega, API se nahi
-        const data = await getFeaturedProducts();
-        setFeaturedProducts(data || []);
-      } catch (err) {
-        console.error('Failed to fetch featured products:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProducts();
-  }, []);
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      const data = await getFeaturedProducts(); // Direct function call
+      setFeaturedProducts(data || []);
+    } catch (err) {
+      console.error('Failed to fetch featured products:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  fetchProducts();
+}, []);
 
   const features = [
     { icon: Shield, title: 'Securus Cctv', desc: 'Advanced security & surveillance solutions' },

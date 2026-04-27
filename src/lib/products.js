@@ -1,4 +1,5 @@
-import { supabase } from './supabaseClient'; // Path check karein agar error aaye
+// src/lib/products.js ke andar
+import { supabase } from './supabaseClient'; // './' ka matlab hai same folder
 
 export const getFeaturedProducts = async () => {
   try {

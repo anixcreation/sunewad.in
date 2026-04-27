@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../components/ProductCard';
 import { Search, Filter } from 'lucide-react';
-import { supabase } from '../lib/supabaseClient'; // Path check kar lena
+import { supabase } from '../lib/supabaseClient'; // Path sahi rakhein
 
 
 const CATEGORIES = [
@@ -18,6 +18,7 @@ const SUBCATEGORIES: Record<string, string[]> = {
   'Securus': ['All', 'DVR', 'NVR', 'IP Camera', 'Analog Cameras', 'Power Supply', 'Accessories'],
   'Coreprix': ['All', 'DVR', 'NVR', 'IP Camera', 'Analog Cameras', 'Power Supply', 'Accessories'],
 };
+
 
 export default function Products() {
   const [products, setProducts] = useState([]);
