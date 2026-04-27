@@ -1,31 +1,14 @@
-import supabase from './_supabase.js';
+const { neon } = require('@neondatabase/serverless');
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  if (req.method === 'OPTIONS') return res.status(204).end();
+  const sql = neon(process.env.DATABASE_URL);
 
   try {
-    if (req.method === 'GET') {
-      const { featured, category } = req.query;
-      let query = supabase.from('products').select('*').order('created_at', { ascending: false });
-      
-    //  if (featured === 'true') {
-      //  query = query.eq('featured', true);
-     // }
-      //if (category) {
-      //  query = query.eq('category', category);
-      //}
-
-      const { data, error } = await query;
-      if (error) throw error;
-      return res.status(200).json(data);
-    }
-    
-    res.status(405).json({ error: 'Method not allowed' });
-  } catch (err) {
-    console.error('API error:', err);
-    res.status(500).json({ error: err.message });
+    // Neon se products lana
+    const result = await sql`SELECT * FROM products`;
+    res.status(200).json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Neon DB connection failed" });
   }
 }
