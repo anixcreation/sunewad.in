@@ -92,7 +92,7 @@ export default function Layout({ children, user }: LayoutProps) {
   <img 
     src="/favicon.svg" 
     alt="Sunewad Logo" 
-    className="w-full h-full object-contain p-0.5" 
+    className="w-full h-full object-contain p-0.0" 
   />
 </div>
   <span className="font-bold tracking-tight text-lg hidden sm:block">Sunewad Multiservices</span>
