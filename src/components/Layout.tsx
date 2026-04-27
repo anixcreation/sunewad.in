@@ -85,18 +85,26 @@ export default function Layout({ children, user }: LayoutProps) {
       <header className="sticky top-0 z-50 w-full border-b border-[#222] bg-[#111111]/80 backdrop-blur-md text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-         {/* Logo */}
+ {/* Logo */}
 <Link to="/" className="flex items-center gap-3">
-  {/* Round Logo Container */}
-  <div className="w-9 h-9 bg-gradient-to-br from-white-600 to-white-800 rounded-full flex items-center justify-center shadow-lg shadow-red-900/50 border border-red-500/30 overflow-hidden">
+  {/* Round Logo Container with White Background */}
+  <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center shadow-md border border-gray-200 overflow-hidden">
     <img 
       src="/favicon.svg" 
       alt="Sunewad Logo" 
       className="w-full h-full object-contain p-1.5" 
     />
   </div>
-  <span className="font-bold tracking-tight text-lg hidden sm:block">Sunewad Multiservices</span>
-  <span className="font-bold tracking-tight text-lg sm:hidden">Sunewad</span>
+  
+  {/* Branding Text */}
+  <div className="flex flex-col">
+    <span className="font-bold tracking-tight text-lg hidden sm:block dark:text-white text-gray-900">
+      Sunewad Multiservices
+    </span>
+    <span className="font-bold tracking-tight text-lg sm:hidden dark:text-white text-gray-900">
+      Sunewad
+    </span>
+  </div>
 </Link>
 
           {/* Desktop Navigation */}
