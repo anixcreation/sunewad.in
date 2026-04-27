@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../components/ProductCard';
 import { Search, Filter } from 'lucide-react';
-import { supabase } from '../lib/supabaseClient.ts'; // Path sahi rakhein
+import { supabase } from '../lib/supabaseClient'; // Path sahi rakhein
 
 
 const CATEGORIES = [
