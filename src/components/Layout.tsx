@@ -86,13 +86,15 @@ export default function Layout({ children, user }: LayoutProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-red-600 to-red-800 rounded-lg flex items-center justify-center text-white font-bold shadow-lg shadow-red-900/50 border border-red-500/30">
-              <link rel="icon" type="image/svg+xml" href="public/favicon.svg" />
-            </div>
-            <span className="font-bold tracking-tight text-lg hidden sm:block">Sunewad Multiservices</span>
-            <span className="font-bold tracking-tight text-lg sm:hidden">Sunewad</span>
-          </Link>
+              <div className="w-9 h-9 bg-gradient-to-br from-red-600 to-red-800 rounded-xl flex items-center justify-center shadow-lg shadow-red-900/50 border border-red-500/30 overflow-hidden">
+        
+        <img
+          src="/logo.png"
+          alt="Sunewad Multiservices"
+          className="w-full h-full object-contain"
+        />
+
+      </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1 lg:gap-2">
