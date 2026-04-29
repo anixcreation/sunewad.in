@@ -10,7 +10,7 @@ import Contact from './pages/Contact';
 import Terms from './pages/Terms';
 import Configurator from './pages/Configurator';
 import HddCalculator from './pages/HddCalculator';
-import supabase from './lib/supabase';
+import supabase from "./lib/supabase";
 
 function App() {
   const [user, setUser] = useState<any>(null);
