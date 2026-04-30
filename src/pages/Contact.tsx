@@ -118,7 +118,7 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={e => setFormData({...formData, phone: e.target.value})}
                     className="input-field"
-                    placeholder="+91 0000000000"
+                    placeholder="+91 9420047039"
                   />
                 </div>
               </div>
