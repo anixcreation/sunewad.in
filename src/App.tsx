@@ -10,8 +10,12 @@ import Contact from './pages/Contact';
 import Terms from './pages/Terms';
 import Configurator from './pages/Configurator';
 import HddCalculator from './pages/HddCalculator';
-import supabase from "./lib/supabase";
+import { supabase } from './lib/supabase';
 
+export default function App() {
+  const [todos, setTodos] = useState([])
+
+ 
 function App() {
   const [user, setUser] = useState<any>(null);
 
@@ -47,4 +51,23 @@ function App() {
   );
 }
 
-export default App;
+ useEffect(() => {
+    async function getTodos() {
+      const { data: todos } = await supabase.from('todos').select()
+
+      if (todos) {
+        setTodos(todos)
+      }
+    }
+
+    getTodos()
+  }, [])
+
+  return (
+    <ul>
+      {todos.map((todo) => (
+        <li key={todo.id}>{todo.name}</li>
+      ))}
+    </ul>
+  )
+}
