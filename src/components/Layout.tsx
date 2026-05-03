@@ -4,7 +4,7 @@ import { Home, Package, Briefcase, Phone, FileText, Menu, X, Moon, Sun, LogIn, L
 import { useTheme } from '../contexts/ThemeContext';
 import { useCart } from '../contexts/CartContext';
 import { signInWithGoogle } from '../lib/googleAuth';
-import supabase from '../lib/supabase';
+import { supabase } from '../lib/supabase'; 
 import CartSidebar from './CartSidebar';
 
 interface LayoutProps {
