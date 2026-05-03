@@ -13,20 +13,27 @@ import HddCalculator from './pages/HddCalculator';
 import { supabase } from './lib/supabase';
 
 export default function App() {
-  const [todos, setTodos] = useState([])
-
- 
-function App() {
   const [user, setUser] = useState<any>(null);
+  const [todos, setTodos] = useState<any[]>([]);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }: any) => {
+    // Auth
+    supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event: any, session: any) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
     });
+
+    // Fetch todos
+    async function getTodos() {
+      const { data, error } = await supabase.from('todos').select();
+      if (error) console.log(error);
+      if (data) setTodos(data);
+    }
+
+    getTodos();
 
     return () => subscription.unsubscribe();
   }, []);
@@ -43,31 +50,17 @@ function App() {
             <Route path="/configurator" element={<Configurator />} />
             <Route path="/hdd-calculator" element={<HddCalculator />} />
             <Route path="/terms" element={<Terms />} />
-          
           </Routes>
+
+          {/* Test Data */}
+          <ul>
+            {todos.map((todo) => (
+              <li key={todo.id}>{todo.name}</li>
+            ))}
+          </ul>
+
         </Layout>
       </CartProvider>
     </ThemeProvider>
   );
-}
-
- useEffect(() => {
-    async function getTodos() {
-      const { data: todos } = await supabase.from('todos').select()
-
-      if (todos) {
-        setTodos(todos)
-      }
-    }
-
-    getTodos()
-  }, [])
-
-  return (
-    <ul>
-      {todos.map((todo) => (
-        <li key={todo.id}>{todo.name}</li>
-      ))}
-    </ul>
-  )
 }
