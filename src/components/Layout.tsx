@@ -1,103 +1,114 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Package, Briefcase, Phone, FileText, Menu, X, Moon, Sun, LogIn, LogOut, User, ShoppingBag, ChevronDown, Mail } from 'lucide-react';
+import { Phone, Menu, X, Moon, Sun, LogIn, LogOut, User, ShoppingBag, ChevronDown, Mail } from 'lucide-react';
+import type { User as SupabaseUser } from '@supabase/supabase-js';
 import { useTheme } from '../contexts/ThemeContext';
 import { useCart } from '../contexts/CartContext';
 import { signInWithGoogle } from '../lib/googleAuth';
-import { supabase } from '../lib/supabase'; 
+import { supabase } from '../lib/supabaseClient'; 
 import CartSidebar from './CartSidebar';
 
 interface LayoutProps {
   children: React.ReactNode;
-  user: any;
+  user: SupabaseUser | null;
 }
 
-export default function Layout({ children, user }: LayoutProps) {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isProductsOpen, setIsProductsOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
-  const { totalItems, setIsCartOpen } = useCart();
-  const location = useLocation();
+interface HeaderProps {
+  user: SupabaseUser | null;
+  isMobileMenuOpen: boolean;
+  setIsMobileMenuOpen: (open: boolean) => void;
+  theme: string;
+  toggleTheme: () => void;
+  totalItems: number;
+  setIsCartOpen: (open: boolean) => void;
+  handleSignOut: () => Promise<void>;
+  location: ReturnType<typeof useLocation>;
+}
 
-  const navigation = [
-    { name: 'Home', href: '/' },
-    { 
-      name: 'Products', 
-      href: '/products',
-      dropdown: [
-        { name: 'Securus', href: '/products?category=Securus' },
-        { name: 'Coreprix', href: '/products?category=Coreprix' },
-        { name: 'Accessories', href: '/products?category=Accessories' },
-      ]
-    },
-    { 
-      name: 'Services', 
-      href: '/services',
-      dropdown: [
-        { name: 'Online Support', href: '/services#support' },
-        { name: 'Development', href: '/services#development' },
-        { name: 'Installation', href: '/services#installation' },
-      ]
-    },
-    { 
-      name: 'Tools', 
-      href: '#',
-      dropdown: [
-        { name: 'System Configurator', href: '/configurator' },
-        { name: 'HDD Backup Calculator', href: '/hdd-calculator' },
-      ]
-    },
-    { name: 'Contact', href: '/contact' },
-    { name: 'Terms', href: '/terms' },
-  ];
+const navigation = [
+  { name: 'Home', href: '/' },
+  { 
+    name: 'Products', 
+    href: '/products',
+    dropdown: [
+      { name: 'Securus', href: '/products?category=Securus' },
+      { name: 'Coreprix', href: '/products?category=Coreprix' },
+      { name: 'Accessories', href: '/products?category=Accessories' },
+    ]
+  },
+  { 
+    name: 'Services', 
+    href: '/services',
+    dropdown: [
+      { name: 'Online Support', href: '/services#support' },
+      { name: 'Development', href: '/services#development' },
+      { name: 'Installation', href: '/services#installation' },
+    ]
+  },
+  { 
+    name: 'Tools', 
+    href: '#',
+    dropdown: [
+      { name: 'System Configurator', href: '/configurator' },
+      { name: 'HDD Backup Calculator', href: '/hdd-calculator' },
+    ]
+  },
+  { name: 'Contact', href: '/contact' },
+  { name: 'Terms', href: '/terms' },
+];
 
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-  };
-
-  const Header = () => (
-    <>
-      {/* Top Contact Bar */}
-      <div className="bg-black text-gray-300 text-xs py-2 px-4 border-b border-[#222]">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <a href="tel:9420047039" className="flex items-center gap-1.5 hover:text-red-500 transition-colors font-medium">
-              <Phone size={12} /> +91 9420047039
-            </a>
-            <a href="mailto:anishsunewad@gmail.com" className="flex items-center gap-1.5 hover:text-red-500 transition-colors font-medium">
-              <Mail size={12} /> anishsunewad@gmail.com
-            </a>
-          </div>
-          <div className="hidden sm:block text-red-500 font-bold tracking-wide">Professional CCTV Security Solutions</div>
+const Header: React.FC<HeaderProps> = ({ 
+  user, 
+  isMobileMenuOpen, 
+  setIsMobileMenuOpen, 
+  theme, 
+  toggleTheme, 
+  totalItems, 
+  setIsCartOpen,
+  handleSignOut,
+  location
+}) => (
+  <>
+    {/* Top Contact Bar */}
+    <div className="bg-black text-gray-300 text-xs py-2 px-4 border-b border-[#222]">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        <div className="flex items-center gap-4">
+          <a href="tel:9420047039" className="flex items-center gap-1.5 hover:text-red-500 transition-colors font-medium">
+            <Phone size={12} /> +91 9420047039
+          </a>
+          <a href="mailto:anishsunewad@gmail.com" className="flex items-center gap-1.5 hover:text-red-500 transition-colors font-medium">
+            <Mail size={12} /> anishsunewad@gmail.com
+          </a>
         </div>
+        <div className="hidden sm:block text-red-500 font-bold tracking-wide">Professional CCTV Security Solutions</div>
       </div>
+    </div>
 
-      {/* Festival Offer Banner */}
-      <div className="bg-gradient-to-r from-red-600 via-red-700 to-red-600 text-white px-4 py-2 text-center text-sm font-medium relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30 mix-blend-overlay"></div>
-        <div className="relative z-10 flex items-center justify-center gap-2">
-          <span className="animate-pulse">🎉</span>
-          <span><strong>Special:</strong> Get up to 10% off on all Installation Packages!</span>
-          <Link to="/contact" className="underline font-bold hover:text-red-200 transition-colors ml-2">Claim Now</Link>
-        </div>
+    {/* Festival Offer Banner */}
+    <div className="bg-gradient-to-r from-red-600 via-red-700 to-red-600 text-white px-4 py-2 text-center text-sm font-medium relative overflow-hidden">
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30 mix-blend-overlay"></div>
+      <div className="relative z-10 flex items-center justify-center gap-2">
+        <span className="animate-pulse">🎉</span>
+        <span><strong>Special:</strong> Get up to 10% off on all Installation Packages!</span>
+        <Link to="/contact" className="underline font-bold hover:text-red-200 transition-colors ml-2">Claim Now</Link>
       </div>
-      
-      <header className="sticky top-0 z-50 w-full border-b border-[#222] bg-[#111111]/80 backdrop-blur-md text-white">
+    </div>
+    
+    <header className="sticky top-0 z-50 w-full border-b border-[#222] bg-[#111111]/80 backdrop-blur-md text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-         {/* Logo */}
-<Link to="/" className="flex items-center gap-3">
-  {/* Round Logo Container */}
-  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md border border-gray-200 overflow-hidden">
-  <img 
-    src="/favicon.svg" 
-    alt="Sunewad Logo" 
-    className="w-full h-full object-contain p-0.0" 
-  />
-</div>
-  <span className="font-bold tracking-tight text-lg hidden sm:block">Sunewad Multiservices</span>
-  <span className="font-bold tracking-tight text-lg sm:hidden">Sunewad</span>
-</Link>
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md border border-gray-200 overflow-hidden">
+              <img 
+                src="/favicon.svg" 
+                alt="Sunewad Logo" 
+                className="w-full h-full object-contain p-0" 
+              />
+            </div>
+            <span className="font-bold tracking-tight text-lg hidden sm:block">Sunewad Multiservices</span>
+            <span className="font-bold tracking-tight text-lg sm:hidden">Sunewad</span>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1 lg:gap-2">
@@ -315,12 +326,32 @@ export default function Layout({ children, user }: LayoutProps) {
         </div>
       )}
     </header>
-    </>
-  );
+  </>
+);
+
+export default function Layout({ children, user }: LayoutProps) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+  const { totalItems, setIsCartOpen } = useCart();
+  const location = useLocation();
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-[var(--bg-light)] dark:bg-[var(--bg-dark)]">
-      <Header />
+      <Header
+        user={user}
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+        theme={theme}
+        toggleTheme={toggleTheme}
+        totalItems={totalItems}
+        setIsCartOpen={setIsCartOpen}
+        handleSignOut={handleSignOut}
+        location={location}
+      />
       <CartSidebar />
       
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -331,22 +362,21 @@ export default function Layout({ children, user }: LayoutProps) {
       <footer className="border-t border-[var(--border-light)] dark:border-[var(--border-dark)] bg-[var(--card-light)] dark:bg-[#111] mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-           <div className="space-y-4">
-  <div className="flex items-center gap-2 font-bold text-lg">
-    {/* Round White Logo Container */}
-    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-200 overflow-hidden shrink-0">
-      <img 
-        src="/favicon.svg" 
-        alt="Sunewad Logo" 
-        className="w-full h-full object-contain p-0.0" 
-      />
-    </div>
-    <span className="dark:text-white text-gray-900">Sunewad Multiservices</span>
-  </div>
-  <p className="text-sm text-gray-500 dark:text-gray-400 max-w-xs">
-    Premium security systems, IT hardware, and professional development services.
-  </p>
-</div>
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 font-bold text-lg">
+                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-200 overflow-hidden shrink-0">
+                  <img 
+                    src="/favicon.svg" 
+                    alt="Sunewad Logo" 
+                    className="w-full h-full object-contain p-0" 
+                  />
+                </div>
+                <span className="dark:text-white text-gray-900">Sunewad Multiservices</span>
+              </div>
+              <p className="text-sm text-gray-500 dark:text-gray-400 max-w-xs">
+                Premium security systems, IT hardware, and professional development services.
+              </p>
+            </div>
             <div>
               <h3 className="font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400">
@@ -355,7 +385,7 @@ export default function Layout({ children, user }: LayoutProps) {
                 <li><Link to="/contact" className="hover:text-red-500 transition-colors">Contact</Link></li>
                 <li><Link to="/terms" className="hover:text-red-500 transition-colors">Terms & Conditions</Link></li>
               </ul>
-          </div>
+            </div>
             <div>
               <h3 className="font-semibold mb-4">Contact</h3>
               <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400">
@@ -369,17 +399,17 @@ export default function Layout({ children, user }: LayoutProps) {
           <div className="mt-8 pt-8 border-t border-[var(--border-light)] dark:border-[var(--border-dark)] text-sm text-gray-500 dark:text-gray-400 text-center">
             © {new Date().getFullYear()} Sunewad Multiservices. All rights reserved.
           </div>
-           <div className="mt-8 text-sm text-gray-500 dark:text-gray-400 text-right">
-  powered by{" "}
-  <a 
-    href="https://www.instagram.com/anix.ac" 
-    target="_blank" 
-    rel="noopener noreferrer"
-    className="hover:text-blue-500 transition-colors duration-200"
-  >
-    @anix.ac
-  </a>
-</div>
+          <div className="mt-8 text-sm text-gray-500 dark:text-gray-400 text-right">
+            powered by{" "}
+            <a 
+              href="https://www.instagram.com/anix.ac" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-blue-500 transition-colors duration-200"
+            >
+              @anix.ac
+            </a>
+          </div>
         </div>
       </footer>
     </div>

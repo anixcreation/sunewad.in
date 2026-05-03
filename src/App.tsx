@@ -10,19 +10,25 @@ import Contact from './pages/Contact';
 import Terms from './pages/Terms';
 import Configurator from './pages/Configurator';
 import HddCalculator from './pages/HddCalculator';
-import { supabase } from './lib/supabase';
+import { supabase } from './lib/supabaseClient';
+import type { User, Session } from '@supabase/supabase-js';
+
+interface Todo {
+  id: string;
+  name: string;
+}
 
 export default function App() {
-  const [user, setUser] = useState<any>(null);
-  const [todos, setTodos] = useState<any[]>([]);
+  const [user, setUser] = useState<User | null>(null);
+  const [todos, setTodos] = useState<Todo[]>([]);
 
   useEffect(() => {
     // Auth
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(({ data: { session } }: { data: { session: Session | null } }) => {
       setUser(session?.user ?? null);
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event: string, session: Session | null) => {
       setUser(session?.user ?? null);
     });
 
